@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         gridView=findViewById(R.id.recycler_grid_view);
-        //getDataList();
-        //loadJSONFromAsset();
         try {
             JSONObject jo= null;
             JSONArray jsonArray = new JSONArray(loadJSONFromAsset());
@@ -61,17 +59,9 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < jsonArray.length(); i++) {
                 jo = jsonArray.getJSONObject(i);
 
-                String date=jo.getString("date");
-                String copyright=jo.getString("copyright");
-                Log.e("copy",""+copyright);
-                String explanation=jo.getString("explanation");
-                String hdurl=jo.getString("hdurl");
-                String media_type=jo.getString("media_type");
-                String service_version=jo.getString("service_version");
-                String title=jo.getString("title");
-                String url=jo.getString("url");
+               String url=jo.getString("url");
 
-                DataModel dataModel = new DataModel(copyright,date,explanation,hdurl,media_type,service_version,title,url);
+                DataModel dataModel = new DataModel(url);
                 data.add(dataModel);
             }
             RecyclerviewAdapter_grid   recyclerviewAdapter= new RecyclerviewAdapter_grid(MainActivity.this,data);
@@ -103,56 +93,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return json;
     }
-
-   /* public void getDataList() {
-
-        String url1 = BaseClass.mainURL;
-//Log.e("url",""+url1);
-        final ProgressDialog progress = new ProgressDialog(MainActivity.this);
-        progress.setMessage("Loading...");
-        progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
-        progress.show();
-        data.clear();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url1,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            progress.dismiss();
-                            Log.e("resp",response);
-
-
-
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progress.dismiss();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Error_alert",""+ error.getMessage());
-                        progress.dismiss();
-                    }
-                }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-
-
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-        int socketTimeout = 30000;//30 seconds - change to what you want
-        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-        stringRequest.setRetryPolicy(policy);
-        requestQueue.add(stringRequest);
-
-    }*/
 
 
 }

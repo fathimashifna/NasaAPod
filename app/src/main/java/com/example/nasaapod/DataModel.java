@@ -24,6 +24,11 @@ public class DataModel {
         this.url=url;
     }
 
+    public  DataModel( String url)
+    {
+        this.url=url;
+    }
+
     public String getCopyright() {
         return copyright;
     }

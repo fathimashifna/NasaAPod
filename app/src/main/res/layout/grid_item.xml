@@ -30,7 +30,7 @@
                     android:layout_width="@dimen/_60sdp"
                     android:layout_height="@dimen/_60sdp"
                     android:layout_gravity="center"
-                    android:padding="@dimen/_2sdp"
+                    android:padding="@dimen/_1sdp"
                     android:src="@drawable/logo" />
             </androidx.cardview.widget.CardView>
 

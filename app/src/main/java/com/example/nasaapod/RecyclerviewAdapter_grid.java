@@ -1,6 +1,7 @@
 package com.example.nasaapod;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,18 +70,16 @@ public class RecyclerviewAdapter_grid extends RecyclerView.Adapter<RecyclerviewA
             e.printStackTrace();
         }
 
-        //Log.e("TEST", String.valueOf(url));
         Picasso.get()
                 .load(imgurl)
                 .into(holder.image_view);
-        //  String crs_id=dataModel.getCourse_id();
-       /* holder.linear_layout_1.setOnClickListener(new View.OnClickListener() {
+         holder.linear_layout_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, SubjectActivity.class).putExtra("course_id", crs_id).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(new Intent(context, DetailsActivity.class).putExtra("pos",position).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 );
             }
-        });*/
+        });
     }
 
     @Override
